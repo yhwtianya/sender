@@ -1,15 +1,17 @@
 package cron
 
 import (
+	"log"
+	"time"
+
 	"github.com/open-falcon/sender/g"
 	"github.com/open-falcon/sender/model"
 	"github.com/open-falcon/sender/proc"
 	"github.com/open-falcon/sender/redis"
 	"github.com/toolkits/net/httplib"
-	"log"
-	"time"
 )
 
+// 持续读取mail队列数据，并发调用发送mail接口
 func ConsumeMail() {
 	queue := g.Config().Queue.Mail
 	for {
@@ -22,6 +24,7 @@ func ConsumeMail() {
 	}
 }
 
+// 并发调用发送mail接口
 func SendMailList(L []*model.Mail) {
 	for _, mail := range L {
 		MailWorkerChan <- 1
@@ -29,6 +32,7 @@ func SendMailList(L []*model.Mail) {
 	}
 }
 
+// 调用发送mail接口
 func SendMail(mail *model.Mail) {
 	defer func() {
 		<-MailWorkerChan

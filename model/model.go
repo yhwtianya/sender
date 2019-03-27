@@ -4,11 +4,13 @@ import (
 	"fmt"
 )
 
+// alarm写入sms队列的数据结构
 type Sms struct {
 	Tos     string `json:"tos"`
 	Content string `json:"content"`
 }
 
+// alarm写入mail队列的数据结构
 type Mail struct {
 	Tos     string `json:"tos"`
 	Subject string `json:"subject"`

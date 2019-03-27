@@ -2,10 +2,12 @@ package http
 
 import (
 	"fmt"
-	"github.com/open-falcon/sender/proc"
 	"net/http"
+
+	"github.com/open-falcon/sender/proc"
 )
 
+// 获得sms,mail发送总数量
 func configProcRoutes() {
 
 	http.HandleFunc("/count", func(w http.ResponseWriter, r *http.Request) {

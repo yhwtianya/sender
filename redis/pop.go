@@ -2,11 +2,13 @@ package redis
 
 import (
 	"encoding/json"
+	"log"
+
 	"github.com/garyburd/redigo/redis"
 	"github.com/open-falcon/sender/model"
-	"log"
 )
 
+// 读取sms队列所有数据
 func PopAllSms(queue string) []*model.Sms {
 	ret := []*model.Sms{}
 
@@ -39,6 +41,7 @@ func PopAllSms(queue string) []*model.Sms {
 	return ret
 }
 
+// 读取mail队列所有数据
 func PopAllMail(queue string) []*model.Mail {
 	ret := []*model.Mail{}
 

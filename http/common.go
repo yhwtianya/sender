@@ -1,12 +1,14 @@
 package http
 
 import (
-	"github.com/open-falcon/sender/g"
-	"github.com/toolkits/file"
 	"net/http"
 	"strings"
+
+	"github.com/open-falcon/sender/g"
+	"github.com/toolkits/file"
 )
 
+// 通用信息
 func configCommonRoutes() {
 	http.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("ok"))
